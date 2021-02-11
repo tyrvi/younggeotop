@@ -1,0 +1,29 @@
+* Sources
+** The Grothendieck Festschrift
+
+Contains the paper /Higher Algebraic K-theory of Schemes and of Derived
+Categories/ by Thomason and Trobaugh which shows that K-theory
+satisfies descent for finite dimensional Noetherian schemes on the
+Zariski site.
+
+** Algebraic K-theory: Connections with Geometry and Topology
+
+Contains the paper /The Completely Decomposed Topology on Schemes and
+Associated Descent Spectral Sequences in Algebraic K-Theory/ by
+Nisnevich which shows that K-theory satisfies descent for the
+Nisnevich topology. Also introduces the Nisnevich topology.
+
+** $A^1$-homotopy theory of schemes
+
+In this paper we begin to develop a machinery which we call
+$A^1$-homotopy theory of schemes. All our constructions are based on
+the intuitive feeling that if the category of algebraic varieties is
+in any way similar to the category of topological spaces then there
+should exist a homotopy theory of algebraic varieties where affine
+line plays the role of the unit interval. For a discussion of the main
+ideas on which our approach is based we refer the reader to [ICM 1998
+paper]
+
+** An Introduction to $A^1$-homotopy theory
+
+** Noncommutative Motives I: From Commutative to Noncommutative Motives

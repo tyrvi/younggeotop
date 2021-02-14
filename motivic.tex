@@ -1,0 +1,702 @@
+\documentclass[12pt]{article}
+\synctex=1
+
+% setup packages
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+% \usepackage[hmargin={2cm,2cm},height=26cm]{geometry}
+% \usepackage[a4paper,lmargin=2cm,rmargin=2cm]{geometry}
+% \usepackage[a4paper,hmargin={2cm,2cm}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{imakeidx} % for index
+\usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{
+  bookmarks=true,
+  hyperindex=true,
+  colorlinks=true,
+  linkcolor=blue,
+}
+\usepackage{tjmmath}
+
+% label things within a given section
+\numberwithin{equation}{section}
+% \numberwithin{align}{section}
+\numberwithin{lemma}{section}
+\numberwithin{theorem}{section}
+\numberwithin{proposition}{section}
+\numberwithin{corollary}{section}
+\numberwithin{definition}{section}
+\numberwithin{example}{section}
+\numberwithin{remark}{section}
+
+% start section numbering a 0
+\setcounter{section}{-1}
+
+\newcommand{\name}{Thais Minet}
+% \newcommand{\pn}{950904-1233, 950904-T530}
+\newcommand{\thedate}{}
+\newcommand{\course}{Motivic Homotopy Theory}
+\newcommand{\assignment}{}
+\makeindex
+
+
+\begin{document}
+\title{\course\\ \assignment}
+\author{\name{}}
+\date{\thedate}
+\maketitle
+
+\tableofcontents
+
+%-------------------------------------------------------------------------------
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Notes from the
+\href{https://sites.google.com/view/maxime-ramzi-en/geotop-junior-seminar?authuser=0}{Spring
+  2021 GeoTop junior seminar} at the University of Copenhagen. The
+course primarily follows the
+\href{https://math.mit.edu/events/talbot/index.php?year=2014}{Talbot
+  seminar}.
+
+\subsection*{Notation and Conventions}
+
+Since we are primarily working in the world of algebraic geometry,
+that is, with schemes we say that a topological space $X$
+\emph{quasi-compact} if every open cover has a finite subcover and
+reserve the term \emph{compact} for the case when $X$ is quasi-compact
+and Hausdorff.
+
+\section{Background from Algebraic Geometry}
+
+\begin{definition}
+  Let $f : X \to Y$ be a map of topological spaces, then $f$ is
+  \emph{quasi-compact} if $f^{-1}(V)$ is quasi-compact for every
+  quasi-compact open $V \subset Y$.
+\end{definition}
+
+\begin{lemma}{\emph{(\href{https://stacks.math.columbia.edu/tag/01K2}{Tag 01K2})}}
+  Let $f : X \to S$ be a morphism of schemes, then the following are
+  equivalent:
+  \begin{enumerate}[label=(\arabic*)]
+  \item $f : X \to S$ is quasi-compact,
+  \item the inverse image of every affine open is quasi-compact,
+  \item there exists an affine open cover $S = \cup_{i \in I} U_i$
+    such that $f^{-1}(U_i)$ is quasi-compact for all $i$.
+  \end{enumerate}
+\end{lemma}
+
+In topology one has the theorem that a space $X$ is Hausdorff if and
+only if the diagonal
+\begin{align*}
+  \Delta : X &\to X \times X \\
+  x &\mapsto (x, x)
+\end{align*}
+is closed. In algebraic geometry given $f : X \to S$ we have a
+diagonal map obtained by the fiber product
+$\Delta_{X/S} : X \to X \times_{S} X$. That is, $\Delta_{X/S}$ is the
+unique morphism of schemes such that
+$\pr[1] \circ \Delta_{X/S} = \id[X]$ and
+$\pr[2] \circ \Delta_{X/S} = \id[X]$. One can show that $\Delta_{X/S}$
+is an immersion (\href{https://stacks.math.columbia.edu/tag/01KH}{Tag
+  01KH}).
+
+\begin{definition}
+  Let $f : X \to S$ be a morphism of schemes.
+  \begin{enumerate}[label=(\arabic*)]
+  \item $f$ is said to be separated if the diagonal $\Delta_{X/S}$
+    along $f$ is a closed immersion.
+  \item $f$ is said to be quasi-separated if the diagonal
+    $\Delta_{X/S}$ is a quasi-compact morphism.
+  \item A scheme $Y$ is separated if the morphism $Y \to \Spec \Z$ is separated.
+  \item A scheme $Y$ is quasi-separated if the morphism
+    $Y \to \Spec \Z$ is quasi-separated.
+  \end{enumerate}
+\end{definition}
+
+Recall that a map of rings $R \to A$ is said to be of finite type if
+$A$ is isomorphic to a quotient of $R[x_1, \dots, x_n]$ as an
+$R$-algebra, that is, if $A$ is a finitely generated $R$-algebra.
+
+\begin{definition}{(\href{https://stacks.math.columbia.edu/tag/01T0}{Tag 01T0})}
+  Let $f : X \to S$ be a morphism of schemes, then
+  \begin{enumerate}[label=(\arabic*)]
+  \item $f$ is said to be of \emph{finite type at $x \in X$} if there
+    exists an affine open neighborhood $\Spec A = U \subset X$ of $x$
+    and an affine open $\Spec R = V \subset S$ with $f(U) \subset V$ such that the induced ring map $R \to A$ is of finite type.
+  \item $f$ is \emph{locally of finite type} if $f$ is of finite type
+    for all $x \in X$.
+  \item $f$ is of \emph{finite type} it is locally of finite type and
+    quasi-compact.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Let $X$ be a scheme, then $X$ is \emph{Noetherian} if it admits a
+  finite cover by affine Schemes, $\Spec A_i$, where each $A_i$ is a
+  Noetherian ring.
+\end{definition}
+
+\begin{lemma}{(\emph{\href{https://stacks.math.columbia.edu/tag/01T6}{Lemma
+        01T6}})}
+  Let $f : X \to S$ be a morphism. If $S$ is (locally) Noetherian and
+  $f$ (locally) of finite type then $X$ is (locally) Noetherian.
+\end{lemma}
+
+Let $f : X \to S$ be a morphism of schemes, then we refer to
+\href{https://stacks.math.columbia.edu/tag/01V4}{Tag 01V4} for a
+general definition of smoothness. However, since we will be working
+with $f : X \to S$ of finite type with $S$ a Noetherian scheme we can
+instead refer to \href{https://stacks.math.columbia.edu/tag/02HW}{Tag
+  02HW} for definition of Smoothness. For definitions of etale
+morphisms see \href{https://stacks.math.columbia.edu/tag/02GH}{Tag
+  02GH} and \href{https://stacks.math.columbia.edu/tag/0257}{Tag 0257}
+or \href{https://stacks.math.columbia.edu/tag/024J}{Chapter 024J}
+
+\begin{definition}
+  Let $X$ be a scheme and $x$ a point in $X$. Let $U = \Spec A$ be an
+  affine neighborhood of $x$. Let $P_x$ be the prime ideal
+  corresponding to $x$, then the localization $A_{P_x}$ is a local
+  ring with maximal ideal $P_x \cdot A_{P_x}$. The \emph{residue
+    field} of $x$ is the field
+  \begin{equation*}
+    k(x) := A_{P}/P \cdot A_{P}.
+  \end{equation*}
+  Note that there is an isomorphism $k(x) \cong \text{Frac}(A/P)$
+  % TODO: see Bosch exercise 1.2-5
+  We call the point $x$ $K$-rational for a certain field $K$ if
+  $K \cong k(x)$.
+\end{definition}
+
+Let $A$ be a local ring with maximal ideal $\mmm$ and residue field
+$k$. Let $a \mapsto \ol{a}$ denote the map $A \to k$ and
+$f \mapsto \ol{f}$ denote the map $A[T] \to k[T]$. If $A$ is a
+complete\footnote{Any discrete valuation ring may be given a metric
+  $\abs{x - y} = 2^{-\nu(x - y)}$ and we may take the completion with
+  respect to this metric. Alternatively, we can consider the
+  \href{https://en.wikipedia.org/wiki/Completion_of_a_ring}{completion}
+  of the ring considered as a topological ring since local rings may
+  be given a
+  \href{https://en.wikipedia.org/wiki/Local_ring\#Some_facts_and_definitions}{natural
+    topology}}
+\href{https://en.wikipedia.org/wiki/Discrete_valuation_ring}{discrete
+  valuation ring}, then Hensel's lemma states: If f is a monic
+polynomial with coefficients in $A$ such that $\ol{f}$ factors as
+$\ol{f} = g_0h_0$ with $g_0$ and $h_0$ monic and
+coprime\footnote{i.e. the ideal $(g_0, h_0) = (1)$ generates the whole
+  ring}, then $f$ factors as $f = gh$ with $g$ and $h$ monic such that
+$\ol{g} = g_0$ and $\ol{h} = h_0$.
+
+\begin{definition}
+  Let $A$ be a local ring with maximal ideal $\mmm$, then $A$ is said
+  to be Henselian if Hensel's lemma holds for $A$.
+\end{definition}
+
+Given a ring a local ring $(A, \mmm, k)$ there is a universal ring
+$A^{h}$ called the Henselization of $A$
+(\href{https://stacks.math.columbia.edu/tag/0BSK}{Tag 0BSK},
+\href{https://stacks.math.columbia.edu/tag/07QL}{Tag 07QL},
+\href{https://stacks.math.columbia.edu/tag/03QD}{Tag 03QD}). That is,
+the assignment $A \mapsto A^{h}$ is functorial.
+
+%-------------------------------------------------------------------------------
+
+\section{The Nisnevich Topology and Universal Properties of the Stable
+  and Unstable Motivic Homotopy Categories}
+
+In this talk we introduce the Nisnevich topology for a scheme and
+discuss some of it's properties (including, hopefully, descent) as it
+is central to the definition of the Motivic homotopy category. Then we
+introduce the (un)stable Motivic homotopy categories and discuss/prove
+their universal properties following~\cite{robalo2012noncommutative}
+sections 5.1 and 5.2.
+
+% We begin by discussing Grothendieck topologies. We attempt to do work
+% a much as possible in the setting of $\infty$-categories. However,
+% note that the $\infty$-categorical generalization of a Grothendieck
+% topology is in some sense no generalization at all. This is due to two
+% facts. First, there is a canonical equivalence
+% $N(\CC_{/C}) \simeq N(\CC)_{/C}$ for a $1$-category $\CC$. Secondly,
+% if $\CC$ is an $\infty$-category, then a Grothendieck topology on
+% $\CC$ is equivalent to giving a Grothendieck topology on the homotopy
+% category $h\CC$\footnote{See HTT Remark 6.2.2.3 for details.}. Hence,
+% we discuss Grothendieck (pre)topologies primarily in the setting of
+% $1$-categories, following~\cite{maclane2012sheaves} as it is at times
+% conceptually easier.
+
+% \begin{definition}
+%   Let $\CC$ be an $\infty$-category.
+%   \begin{enumerate}[label=(\arabic*)]
+%   \item A \emph{sieve} on $\CC$ is a full subcategory
+%     $\CC^{(0)} \subseteq \CC$ such that if $f : C \to D$ is a morphism
+%     in $\CC$ and $D \in \CC^{(0)}$, then $C \in \CC^{(0)}$.
+%   \item If $C \in \CC$ is an object, then a \emph{sieve on $C$} is a
+%     sieve on the over (slice) category $\CC_{/C}$.
+%   \item Let $f : D \to C$ be a morphism and $\CC^{(0)}_{/C}$ a sieve
+%     on $C$, then let $f^*\CC^{(0)}_{/C}$ denote the unique sieve on
+%     $D$ such that $f^*\CC^{(0)}_{/C} \subset \CC_{/D}$ and
+%     $\CC^{(0)}_{/C}$ determine the same sieve on $\CC_{/f}$.
+%   \end{enumerate}
+% \end{definition}
+% Observe that this definition is a direct generalization of the
+% definition of a sieve in the setting of $1$-categories so it makes no
+% difference whether $\CC$ is a $1$-category or an $\infty$-category.
+% % TODO: double check this claim
+
+% \begin{definition}{(\emph{Grothendieck Topology})}
+%   Let $\CC$ be an $\infty$-category, then a Grothendieck topology on
+%   $\CC$ consists of for each $C \in \CC$ a collection of sieves called
+%   \emph{covering sieves} such that
+%   \begin{enumerate}[label=(\arabic*)]
+%   \item (maximal sieve) if $C \in \CC$, then the sieve
+%     $\CC_{/C} \subseteq \CC_{/C}$ is a covering sieve;
+%   \item (stability) if $f : C \to D$ is a morphism in $\CC$ and
+%     $\CC^{(0)}_{/C}$ is a covering sieve on $D$, then
+%     $f^*\CC^{(0)}_{/C}$ is a covering sieve on $C$
+%   \item (transitivity) Let $C$ be an object of $\CC$, $\CC^{(0)}_{/C}$
+%     a covering sieve on $C$, and $\CC^{(1)}_{/C}$ an arbitrary sieve
+%     on $C$. If for each $f : D \to C$ in $\CC^{(0)}_{/C}$ that
+%     $f^* \CC^{(1)}_{/C}$ is a covering sieve on $D$, then
+%     $\CC^{(1)}_{/C}$ is a covering sieve on $C$.
+%   \end{enumerate}
+% \end{definition}
+% Again this definition is a direct generalization of the definition of
+% a Grothendieck topology for a $1$-category and by HTT Remark 6.2.2.3
+% the data of a Grothendieck topology on $\CC$ is equivalent to the data
+% of a Grothendieck topology on the homotopy category $h\CC$.
+
+% Consider the following alternative definition of a Grothendieck
+% topology.
+% \begin{definition}
+%   Let $\CC$ be a $1$-category and $U \in \CC$ an object. A
+%   Grothendieck topology on $U$ consists of a collection of families of
+%   maps $\{U_i \to U\}_{i \in I}$ which we call \emph{coverings} of $U$ such
+%   that
+%   \begin{enumerate}[label=(\arabic*)]
+%   \item for any covering $\{U_i \to U\}_{i \in I}$ and any morphism
+%     $V \to U$ the fiber products $U_i \times_U \times V$ exists and
+%     $\{U_i \times_{U} V \to V\}_{i \in I}$ is a covering of $V$;
+%   \item if
+%     $\{U_i \to U\}_{i \in I}$ is a covering of $U$ and if for each
+%     $i \in I$, $\{V_{ij} \to U_i\}_{j \in J_i}$ is a covering of
+%     $U_i$, then the collection $\{V_{ij} \to U_i \to U\}_{i, j}$ is a
+%     covering of $U$;
+%   \item for any $U \in \CC$ the collection $\{\id[U]\}$ is a
+%     covering of $U$.
+%   \end{enumerate}
+%   If $\CC$ is a category with a covering for each $U \in \CC$, then we
+%   call $\CC$ a site.
+% \end{definition}
+
+% We begin by discussing Grothendieck topologies. We attempt to do work
+% a much as possible in the setting of $\infty$-categories. However,
+% note that the $\infty$-categorical generalization of a Grothendieck
+% topology is in some sense no generalization at all. This is due to two
+% facts. First, there is a canonical equivalence
+% $N(\CC_{/C}) \simeq N(\CC)_{/C}$ for a $1$-category $\CC$. Secondly,
+% if $\CC$ is an $\infty$-category, then a Grothendieck topology on
+% $\CC$ is equivalent to giving a Grothendieck topology on the homotopy
+% category $h\CC$\footnote{See HTT Remark 6.2.2.3 for details.}. Hence,
+% we discuss Grothendieck (pre)topologies primarily in the setting of
+% $1$-categories, following~\cite{maclane2012sheaves} as it is at times
+% conceptually easier.
+
+\subsection{Preliminaries}
+
+We begin by discussing Grothendieck (pre)topologies. Although we
+attempt to work as much as possible in the setting of
+$\infty$-categories the $\infty$-categorical generalization of a
+Grothendieck topology is in some sense no generalization at
+all\footnote{This is due to the fact that there is a bijection between
+  Grothendieck topologies on an $\infty$-category $\CC$ and
+  Grothendieck topologies on $h\CC$. Additionally, for a $1$-category
+  one has a canonical equivalence $N(\CC_{/C}) \simeq
+  N(\CC)_{/C}$. Since we will primarily be interested in the nerve of
+  a $1$-category this has no effect. See HTT Remark 6.2.2.3 for
+  details.} so for ease of exposition we discuss Grothendieck
+topologies purely in the setting of $1$-categories. Finally, note that
+there are occasionally set theoretic issues we can generally be
+overcome using the general nonsense of universes so again in the
+interest of exposition we ignore any of these issues.
+
+\begin{definition}
+  Let $\CC$ be a $1$-category. A \emph{Grothendieck pretopology $\tau$
+    on $\CC$} consists of for each $C \in \CC$ a set $\Cov_{\tau}(C)$
+  of \emph{covering families} where a covering is a set of morphisms
+  $\{f_i : U_i \to C\}_{i \in I}$ in $\CC$ such that
+  \begin{enumerate}[label=(\arabic*)]
+  \item $\{\id[C]\}$ is in $\Cov_{\tau}(C)$ for all $C \in \CC$;
+  \item for $\{f_i : U_i \to C\} \in \Cov_{\tau}(C)$ and $g : D \to C$
+    a morphism in $\CC$ the fiber product $U_i \times_C D$ exists and
+    the natural projection $\{\pr[2] : U_i \times_C D \to D\}$ is in
+    $\Cov_{\tau}(D)$;
+  \item if $\{f_j : U_j \to C\}_{j \in J}$ is in $\Cov_{\tau}(C)$ and
+    $\{g_{ij} : V_{ij} \to U_j\} \in \Cov_{\tau}(U_j)$ for all $j$,
+    then $\{f_j \circ g_{ij} : V_{ij} \to C\} \in \Cov_{\tau}(C)$.
+  \end{enumerate}
+\end{definition}
+
+% TODO: discuss Grothendieck topologies
+\begin{definition}
+  \begin{enumerate}[label=(\arabic*)]
+  \item Let $\CC$ be a $1$-category and $C \in \CC$. A \emph{sieve on
+      $C$} is a subfunctor of $\y_C := \Hom_{\CC}(-, C)$, that is, a
+    set of objects of $\CC_{/C}$ such that for each $f : D \to C$ in
+    $\SS$ and each morphism $g_i : D_i \to D$ in $\CC$ the composition
+    $f \circ g_i : D_i \to D$ is in $\SS$.
+  \item Let $\FF := \{f_i : D_i \to X\}$ be a collection of morphisms
+    in $\CC$. The \emph{sieve generated by $\FF$} is the collection of
+    morphisms $h : D \to C$ which factor as $h = f_i \circ g$ for some
+    $f_i \in \FF$.
+  \item If $\SS$ is a sieve over $C$ and $f_i : D_i \to C$ is a
+    morphism in $\CC$, then the restriction $\SS_{D_i}$ of $\SS$ to
+    $D_i$ is the sieve over $D_i$ generated by the maps
+    $g : D \to D_i$ such that $f_i \circ g \in \SS$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Let $\CC$ be a $1$-category. A \emph{Grothendieck topology on $\CC$}
+  consists of for each $C \in \CC$ a family $\SS(C)$ of sieves over
+  $C$ which we call \emph{covering sieves} such that:
+  \begin{enumerate}
+  \item The sieve $\{\id[C]\}$ is a covering sieve of $C$.
+  \item If $\SS$ is a covering sieve of $C$ and $f : D \to C$ is a
+    morphism in $\CC$, then $\SS_{D}$ is a covering sieve of $D$.
+  \item Let $\SS$ be a covering sieve of $C$. If $\TT$ is a covering
+    sieve of $C$ such that for each $f : D \to C$ in $\SS$ the
+    restriction $\TT_D$ is a covering sieve of $D$, then $\TT$ is a
+    covering sieve of $C$.
+  \end{enumerate}
+  We refer to a category $\CC$ with a Grothendieck topology $\tau$ as
+  a site denoted $\CC_\tau$ and where $\abs{\CC_{\tau}} = \CC$ denotes
+  the underlying category.
+\end{definition}
+
+Observe that if for each $C \in \CC$ we have a family $\SS_0(C)$ of
+sieves over $C$, then there is a minimal Grothendieck topology
+$C \mapsto \SS(C)$ with $S_0(C) \subset \SS(C)$ for all $C$. We call
+this the \emph{Grothendieck topology generated by $\SS_0(C)$}.
+
+Given a Grothendieck pretopology $\tau$ on $\CC$, then we may obtain a
+Grothendieck topology on $\CC$ in the following way. Since $\tau$ is a
+Grothendieck pretopology, then for each $C \in \CC$ there is a
+covering family $\{f_i : U_i \to C\} \in \Cov_{\tau}(C)$. Thus, we may
+consider the sieve, $\SS_I$, generated by the covering family
+$\{f_i : U_i \to C\}$. Then taking the collection of all sieves
+generates a Grothendieck topology on $\CC$.
+
+\begin{remark}
+  Let $\tau$ be a Grothendieck topology on a category $\CC$. Given a
+  full subcategory $\CC_0$ of $\CC$, then it will be important to
+  consider a Grothendieck topology on $\CC_0$ induced by $\tau$. This
+  is done in the following way.
+
+  Let $\CC_0$ be a full subcategory of $\CC$ such that if
+  $X \in \CC_0$, $g : Y \to X$ is a morphism in $\CC_0$, and
+  $\{f_i : U_i \to X\}_{i \in I}$ is in $\Cov_{\tau}(X)$, then each
+  $U_i$ is in $\CC_0$ and each fiber product $Y \times_X U_i$ is in
+  $\CC_0$. Then we obtain a Grothendieck topology $\tau_{\CC_0}$ on
+  $\CC_0$ by restricting $\tau$ to $\CC_0$, that is, setting
+  \begin{equation*}
+    \Cov_{\tau_0}(X) := \Cov_{\tau}(X)
+  \end{equation*}
+  for $X \in \CC_0$.
+
+  The case we will primarily be working with where this is important
+  is where we have $\Sm^{ft}(S) := \Sm^{ft}_{/S}$ the full subcategory
+  of $\Sch_{/S}$ consisting of smooth $S$-schemes of finite type. The
+  Zariski, etale, and Nisnevich topologies will, then restrict to
+  Grothendieck topologies on $\Sm^{ft}(S)$ giving sites
+  $\Sm^{ft}(S)_{Zar}$, $\Sm^{ft}(S)_{et}$, and $\Sm^{ft}(S)_{Nis}$.
+\end{remark}
+
+\begin{example}
+  The \emph{indiscrete} topology on a category $\CC$ is the topology
+  $ind$ with $\Cov_{ind}(X) = \{\{\id[X]\}\}$.
+\end{example}
+
+\begin{example}\label{ex:topological-site}
+  The canonical example is the following: let $X$ be a topological
+  space and $\CC = \UU(X)$ be the poset of open subsets of $X$. Then
+  for $U \subset X$ open, $\{f_i : U_i \to U\}$ is in $\Cov(U)$ if
+  $U = \cup_{i} U_i$.
+
+  A similar example is let $\Top$ be the category of topological
+  spaces. Let $\Cov_{\Top}(U) := \Cov_{U}(U)$ gives a Grothendieck
+  topology on $\Top$. Note that for $U_i \subset U$ open and
+  $f : V \to U$ continuous the fiber product $V \times_{U} U_i$ is
+  just the open subset $f^{-1}(U_i) \subset V$. In particular, this
+  implies for $\{f_i : U_i \to U\} \in \Cov(U)$, the fiber product
+  $U_i \times_U U_j$ is just the intersection $U_i \cap U_j$.
+\end{example}
+
+\begin{example}
+  Let $X$ be a scheme and $\abs{X}$ denote the underlying topological
+  space. Taking $\UU(\abs{X})$ as in example~\ref{ex:topological-site}
+  with the same covering families, that is, $\{f_i : U_i \to U\}$ is
+  in $\Cov(U)$ if $U = \cup_{i}U_i$, then this gives the Zariski
+  topology on $X$. We let $X_{Zar}$ denote the site with underlying
+  category $\UU(X)$. Again as in example~\ref{ex:topological-site} we
+  may define a Grothendieck topology on $\Sch$, the category of
+  schemes over a scheme $X$, denoted $\Sch_{Zar}$
+\end{example}
+
+\begin{example}
+  Let $X$ be a scheme. The etale site $X_{et}$ is the site with
+  underlying category $\Sch^{ft,et}_{/X}$ consisting of $f : U \to X$
+  such that $f$ is an finite type etale morphism. For a given $U$ a
+  covering family $\{f_i : U_i \to U\}$ is a set of finite type etale
+  morphisms such that $\coprod_{i} \abs{U_i} \to \abs{U}$ is
+  surjective. Again we may define a site $\Sch_{et}$ on the category
+  $\Sch$ of schemes.
+\end{example}
+% TODO: additional potential examples: h-topology, qfh-topology,
+% cdh-topology, indiscrete topology
+
+
+Now given a site $\CC_\tau$ we may consider $\AA$-valued presheaves on
+$\CC_\tau$ by defining $\PSh(\CC_\tau) := \Fun(\CC^{op}, \AA)$. To
+define $\AA$-valued sheaves requires us to be able to state the sheaf
+axiom which requires $\AA$ to admit products. Recall an equalizer is the limit of a diagram
+\begin{equation*}
+  \begin{tikzcd}
+    \bullet \arrow[r, shift right=2] \arrow[r, shift left=2] & \bullet
+  \end{tikzcd}
+\end{equation*}
+Concretely, the equalizer of two parallel morphisms $f, g : A \to B$
+is an object $E$ and a morphism $e : E \to A$ which is universal such
+that $f \circ e = g \circ e$. That is, given any $z : Z \to A$ such
+that $f \circ z = g \circ z$, then there exists a unique morphism
+$u : Z \to E$ with $e \circ u = z$ as in the diagram
+\begin{equation*}
+  \begin{tikzcd}
+    E \arrow[r, "e"]                          & A \arrow[r, "g"', shift right=2] \arrow[r, "f", shift left=2] & B \\
+    Z \arrow[u, "u", dashed] \arrow[ru, "z"'] &                                                               &
+  \end{tikzcd}
+\end{equation*}
+If $e : E \to A$ is the equalizer of $f$ and $g$ we will say that the
+sequence
+\begin{equation*}
+  \begin{tikzcd}
+    E \arrow[r, "e"] & A \arrow[r, "g"', shift right=2] \arrow[r, "f", shift left=2] & B
+  \end{tikzcd}
+\end{equation*}
+is exact. Note that if $\AA$ is an abelian category this is equivalent
+to requiring that the sequence
+\begin{equation*}
+  \begin{tikzcd}
+    0 \arrow[r] & E \arrow[r, "e"] & A \arrow[r, "f - g"] & B
+  \end{tikzcd}
+\end{equation*}
+is exact in the usual sense.
+
+Hence, let $\AA$ be a category with products and let $F$ be an
+$\AA$-valued presheaf on $\CC_\tau$ and
+$\{f_i : U_i \to X\}_{i \in I} \in \Cov_{\tau}(X)$ for some
+$X \in \CC$. Then we have ``restriction'' morphisms
+\begin{align*}
+  f_i^* : F(X) &\to F(U_i) \\
+  \pr[1, i, j]^* : F(U_i) &\to F(U_i \times_X U_j) \\
+  \pr[2, i, j]^* : F(U_j) &\to F(U_i \times_X U_j)
+\end{align*}
+and taking products we obtain the diagram in $\AA$
+\begin{equation}\label{eq:sheaf-condition}
+  \begin{tikzcd}
+    F(X) \arrow[r, "\prod_i f_i^*"] & \prod_iF(U_i) \arrow[rr, "{\prod_j \pr[1, i, j]^*}"', shift right=2] \arrow[rr, "{\prod_i \pr[2, i, j]^*}", shift left=2] &  & {\prod_{i, j} F(U_i \times_X U_j)}
+  \end{tikzcd}
+\end{equation}
+
+\begin{definition}
+  Let $\AA$ be a category which has arbitrary (small) products and let
+  $\tau$ be a Grothendieck pretopology on a small category $\CC$. An
+  $\AA$-valued presheaf $F$ on $\CC$ is a sheaf for $\tau$ if for each
+  covering $\{f_i : U_i \to X\} \in \Cov_\tau$ the sequence
+  in~\ref{eq:sheaf-condition} is exact. Let $\Shv_\tau^{\AA}(\CC)$
+  denote the category of $\AA$-valued sheaves on $\AA$ with respect to
+  $\tau$ which is the full subcategory of $\PSh^{\AA}(\CC)$ with all
+  objects sheaves. If the context is clear we write $\Shv(\CC)$.
+\end{definition}
+
+% TODO: sheaves on a site? need to discuss equalizers (i.e. sheaf
+% condition is defined in terms of equalizers)
+
+\subsection{The Nisnevich Topology and Descent}
+
+We now define the Nisnevich topology on a scheme $X$ and discuss
+various properties.
+
+\begin{definition}
+  Let $U \to X$ be a morphism of schemes and let $x$ be a point in
+  $X$. Then $f : U \to X$ is said to be \emph{completely decomposed at
+    $x$} if there exists $u \in U$ with $f(u) = x$ such that the
+  induced map of residue fields $k(x) \to k(u)$ is an isomorphism.
+\end{definition}
+
+One makes the observation that points $u$ over which $x$ is completely
+decomposed are in bijection with lifts in the diagram
+\begin{equation*}\label{eq:lift-condition}
+  \begin{tikzcd}
+    & U \arrow[d] \\
+    \Spec k(x) \arrow[r] \arrow[ru, dashed] & X
+  \end{tikzcd}
+\end{equation*}
+where the lift $\Spec k(x) \to U$ corresponding to $u$ is induced by
+$\OO_{U, u} \to k(u) \cong k(x)$\footnote{Using $k(u) \cong k(x)$ to
+  get a lift is clear by considering the usual diagram relating the
+  spectrum of the residue field of a point and the scheme however the
+  other direction is not immediately clear to me.}.
+% TODO: double check this, but it should basically follow from writing
+% down the right diagrams and thinking about it.
+This fact can then allows the immediate deduction of the following:
+\begin{lemma}
+  Given a pullback square
+  \begin{equation*}
+    \begin{tikzcd}
+      V \arrow[d, "\tilde{f}"'] \arrow[r] & U \arrow[d, "f"] \\
+      Y \arrow[r, "g"]      & X
+    \end{tikzcd}
+  \end{equation*}
+  such that $f(y) = x$, then if $f : U \to X$ is completely decomposed
+  at $x$, then $\tilde{f} : V \to Y$ is completely decomposed at
+  $y$. That is, being completely decomposed is stable under pullback.
+\end{lemma}
+
+\begin{definition}
+  A collection, $\{f_i : U_i \to X\}_{i \in I}$, of morphisms of
+  schemes is said to be a \emph{Nisnevich covering} if
+  \begin{enumerate}[label=(\arabic*)]
+  \item $I$ is finite
+  \item each morphism $f_i$ is etale and of finite type
+  \item For each $x \in X$ there exists $i \in I$ such that $f_i$ is
+    completely decomposed at $x$.
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  $\{f_i : U_i \to X\}_{i \in I}$ is a Nisnevich covering if and only if
+  the single induced map $\coprod_{i \in I} U_i \to X$ is a Nisnevich
+  covering.
+  % TODO: double check this
+\end{proposition}
+
+\begin{proposition}
+  Let $S$ be a scheme and $\CC$ a full subcategory of $\Sch_{/S}$
+  such that the pullback in $\Sch_{/S}$ of a diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      & U \arrow[d, "p"] \\
+      Y \arrow[r] & X
+    \end{tikzcd}
+  \end{equation*}
+  in $\CC$ where $p$ is etale of finite type is in $\CC$. Then the
+  class of Nisnevich coverings form a basis for a Grothendieck
+  topology on $\CC$. We call the induced topology the \emph{Nisnevich}
+  topology.
+\end{proposition}
+
+From the definition once can see that any Zariski cover is a Nisnevich
+cover and any Nisnevich cover will be an etale cover. Hence, it
+follows that the Zariski topology is coarser than the Nisenvich
+topology is coarser then the etale topology. Recall that for a scheme
+$X$, then the representable presheaf $X := \Hom(-, X)$ is a sheaf in
+the etale topology. Hence, it follows that every representable
+presheaf in the Nisnevich topology is a sheaf, that is, for an
+appropriate site $\CC_\tau$ with $\tau = Zar, Nis, et$ we have the
+sequence of fully faithful embeddings
+\begin{equation*}
+  \CC \subset \Shv(\CC_{et}) \subset \Shv(\CC_{Nis}) \subset \Shv(\CC_{Zar}) \subset \PSh(\CC).
+\end{equation*}
+
+One additionally has the following proposition which provides an
+alternative characterization of the Nisnevich topology.
+\begin{proposition}\label{prop:alternative-nisnevich-condition}
+  Let $U \to X$ be an etale morphism and $x \in X$. Then the following
+  are equivalent:
+  \begin{enumerate}[label=(\arabic*)]
+  \item $U \to X$ is competely decomposed at $x$;
+  \item The morphism
+    $U \times_X \Spec \OO^h_{X, x} \to \Spec \OO^h_{X, x}$ has a
+    section.
+  \end{enumerate}
+\end{proposition}
+
+In some sense this says that the ``points'' in the Nisnevich topology
+are determined by Hensel local schemes. To prove the proposition one
+uses the following theorem from~\cite{milne1980etale}.
+
+\begin{theorem}{\emph{(\cite{milne1980etale}) Theorem I.4.2(a), (b), (d)}}
+  Let $A$ be a local ring with maximal ideal $\mmm$ and residue field
+  $k$. Let $x$ be the closed point of $X = \Spec A$, then the
+  following are equivalent:
+  \begin{enumerate}[label=(\alph*)]
+  \item $A$ is Henselian
+  \item any finite $A$-algebra $B$ is a direct product of local rings
+    $B = \prod_{i \in I} B_i$ where the $B_i$ are necessarily
+    isomorphic to the rings $B_{\mmm_i}$ with the $\mmm_i$ the maximal
+    ideals of $B$.
+  \item If $f : Y \to X$ is etale and there is a point $y \in Y$ such
+    that $f(y) = x$ and $k(y) \cong k(x)$, then $f$ has a section
+    $s : X \to Y$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}{(of Proposition~\ref{prop:alternative-nisnevich-condition})}
+  Assume (1) holds, then the morphism
+  $U \times_X \Spec \OO^h_{X, x} \to \Spec \OO^h_{X, x}$ is etale by
+  properties of Henselization and pullbacks and completely decomposed
+  at the closed points of $\Spec \OO^h_{X, x}$ (Why?). Thus, it
+  follows by~\cite{milne1980etale} Theorem I.4.2(d) that there is a
+  section so (2) holds.
+
+  For $(2) \implies (1)$ consider the extension of scalars using
+  $\OO^{h}_{X, x} \to k(x)$, then one see that
+  $U \times_X \Spec k(x) \to \Spec k(x)$ has a section which is
+  equivalent to a lift in~\eqref{eq:lift-condition}.
+  % TODO: double check this
+\end{proof}
+
+\begin{definition}
+  A commutative square
+  \begin{equation*}
+    \begin{tikzcd}
+      p^{-1}(U) = U \times_X V \arrow[d] \arrow[r] & V \arrow[d, "p"] \\
+      U \arrow[r, "i"]                             & X
+    \end{tikzcd}
+  \end{equation*}
+  is said to be an \emph{elementary distinguished square} if
+  \begin{enumerate}[label=(\arabic*)]
+  \item the square is a pullback;
+  \item $i : U \xhra X$ is an open immersion;
+  \item $p : V \to X$ is etale;
+  \item the canonical projection $p^{-1}(Z) \to Z$ is an isomorphism
+    where $Z := X \setminus U$ and $p^{-1}(Z)$ have the
+    \href{https://stacks.math.columbia.edu/tag/01J4}{reduced
+      structure} of closed subschemes.
+  \end{enumerate}
+\end{definition}
+
+Observe that a distinguished square determines a Nisnevich covering by
+taking $V \to X$ and $U \to X$.
+% TODO: why?
+
+\subsection{The Motivic Homotopy Category}
+
+\subsection{The Stable Motivic Homotopy Category}
+
+%-------------------------------------------------------------------------------
+
+\section{Algebraic K-theory and Representability in Motivic Homotopy
+  Theory}
+
+
+\addcontentsline{toc}{section}{References}
+
+\nocite{*}
+\bibliographystyle{alpha}
+\bibliography{motivic.bib}
+
+\printindex
+
+\end{document}

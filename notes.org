@@ -1,0 +1,105 @@
+* Sources
+** Noncommutative Motives I: From Commutative to Noncommutative Motives
+
+** The Grothendieck Festschrift
+
+Contains the paper /Higher Algebraic K-theory of Schemes and of Derived
+Categories/ by Thomason and Trobaugh which shows that K-theory
+satisfies descent for finite dimensional Noetherian schemes on the
+Zariski site.
+
+** Algebraic K-theory: Connections with Geometry and Topology
+
+Contains the paper /The Completely Decomposed Topology on Schemes and
+Associated Descent Spectral Sequences in Algebraic K-Theory/ by
+Nisnevich which shows that K-theory satisfies descent for the
+Nisnevich topology. Also introduces the Nisnevich topology.
+
+** $A^1$-homotopy theory of schemes
+
+In this paper we begin to develop a machinery which we call
+$A^1$-homotopy theory of schemes. All our constructions are based on
+the intuitive feeling that if the category of algebraic varieties is
+in any way similar to the category of topological spaces then there
+should exist a homotopy theory of algebraic varieties where affine
+line plays the role of the unit interval. For a discussion of the main
+ideas on which our approach is based we refer the reader to [ICM 1998
+paper]
+
+** An Introduction to $A^1$-homotopy theory
+
+** Motivic Eilenberg-Maclane Spaces
+
+This paper is the second one in a series of papers about operations in
+motivic cohomology. Here we show that in the context of smooth schemes
+over a field of characteristic zero all the bi-stable operations can
+be obtained in the usual way from the motivic reduced powers and the
+Bockstein homomorphism.
+
+** Unstable motivic homotopy categories in Nisnevich and cdh-topologies
+
+The motivic homotopy categories can be defined with respect to
+different topologies and different underlying categories of
+schemes. For a number of reasons (mainly because of the Gluing
+Theorem) the motivic homotopy category built out of smooth schemes
+with respect to the Nisnevich topology plays a distinguished role but
+in some cases it is very desirable to be able to work with all schemes
+instead of the smooth ones. In this paper we prove that, under the
+resolution of singularities assumption, the unstable motivic homotopy
+category of all schemes over a field with respect to the cdh-topology
+is almost equivalent to the unstable motivic homotopy category of
+smooth schemes over the same field with respect to the Nisnevich
+topology. In order to do it we show that the standard cd-topologies on
+the category of Noetherian schemes, including the cdh-topology,
+satisfy certain conditions which allows one to use the generalized
+version of the Brown-Gersten approach to the homotopy theory of
+simplicial sheaves.
+
+** A primer for unstable motivic homotopy theory
+
+In this expository article, we give the foundations, basic facts, and
+first examples of unstable motivic homotopy theory with a view towards
+the approach of Asok-Fasel to the classification of vector bundles on
+smooth complex affine varieties. Our focus is on making these
+techniques more accessible to algebraic geometers.
+
+** A general framework for homotopic descent and codescent
+
+In this paper we elaborate a general homotopy-theoretic framework in
+which to study problems of descent and completion and of their duals,
+codescent and cocompletion. Our approach to homotopic (co)descent and
+to derived (co)completion can be viewed as
+$\infty$-category-theoretic, as our framework is constructed in the
+universe of simplicially enriched categories, which are a model for
+$(\infty, 1)$-categories.  We provide general criteria, reminiscent of
+Mandell's theorem on $E_{\infty}$-algebra models of $p$-complete
+spaces, under which homotopic (co)descent is satisfied. Furthermore,
+we construct general descent and codescent spectral sequences, which
+we interpret in terms of derived (co)completion and homotopic
+(co)descent.  We show that a number of very well-known spectral
+sequences, such as the unstable and stable Adams spectral sequences,
+the Adams-Novikov spectral sequence and the descent spectral sequence
+of a map, are examples of general (co)descent spectral
+sequences. There is also a close relationship between the
+Lichtenbaum-Quillen conjecture and homotopic descent along the
+Dwyer-Friedlander map from algebraic K-theory to étale
+K-theory. Moreover, there are intriguing analogies between derived
+cocompletion (respectively, completion) and homotopy left
+(respectively, right) Kan extensions and their associated assembly
+(respectively, coassembly) maps.
+
+** Universal Homotopy Theories
+
+Given a small category C, we show that there is a universal way of
+expanding C into a model category, essentially by formally adjoining
+homotopy colimits. The technique of localization becomes a method for
+imposing `relations' into these universal gadgets. The paper develops
+this formalism and discusses various applications, for instance to the
+study of homotopy colimits, the Dwyer-Kan theory of framings, and to
+the homotopy theory of schemes.
+
+** Algebraic K-theory and descent for blow-ups
+
+We prove that algebraic K-theory satisfies `pro-descent' for abstract
+blow-up squares of noetherian schemes. As an application we derive
+Weibel's conjecture on the vanishing of negative K-groups.

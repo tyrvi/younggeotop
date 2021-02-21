@@ -1,0 +1,195 @@
+\ProvidesPackage{tjmmath}
+
+% setup packages
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+% \usepackage[hmargin={2cm,2cm},height=26cm]{geometry}
+% \usepackage[a4paper,lmargin=2cm,rmargin=2cm]{geometry}
+\usepackage[a4paper,hmargin={2cm,2cm}]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz-cd}
+\usepackage{wrapfig}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+% \usepackage{hyperref}
+\usepackage{dsfont} % for mathbb numbers
+\usepackage{verbatim} % for multiline comments
+
+% short cut commands
+\newcommand{\F}{\mathbb F}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathbb A}
+\newcommand{\K}{\mathbb K}
+\newcommand{\Proj}{\mathbb P}
+\newcommand{\Zt}{{\mathbb{Z}[\sqrt{3}]}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\UU}{\mathcal{U}}
+\renewcommand{\SS}{\mathcal{S}}
+\renewcommand{\AA}{\mathcal{A}}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\qqq}{\mathfrak{q}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\xlra}{\xlongrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\xra}{\xrightarrow}
+\newcommand{\xhra}{\xhookrightarrow}
+\newcommand{\lla}{\longleftarrow}
+\newcommand{\xlla}{\xlongleftarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\xla}{\xleftarrow}
+\newcommand{\xhla}{\xhookleftarrow}
+\newcommand{\ol}{\overline}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\mdeg}{\text{multideg}}
+\newcommand{\LT}{\text{LT}}
+\newcommand{\LM}{\text{LM}}
+\newcommand{\LC}{\text{LC}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\ul}{\underline}
+\newcommand{\overbar}[1]{\mkern1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern1.5mu}
+\newcommand{\cat}{%
+  \mathbf%
+}
+\newcommand{\dom}[1]{%
+  \mathrm{dom}(#1)%
+}
+\newcommand{\cod}[1]{%
+  \mathrm{cod}(#1)%
+}
+\newcommand{\id}[1][]{%
+  \mathbf{1}_{#1}%
+}
+\newcommand{\pr}[1][]{%
+  \mathbf{pr}_{#1}%
+}
+\newcommand{\Top}{% category of topological spaces
+  \cat{Top}
+}
+\newcommand{\Sch}{% category of schemes
+  \cat{Sch}
+}
+\newcommand{\Aff}{% category of affine schemes/varieties
+  \cat{Aff}
+}
+\newcommand{\Sm}{% Smooth category
+  \cat{Sm}
+}
+\newcommand{\sSet}{% category of simplicial sets
+  \cat{sSet}
+}
+\newcommand{\Set}{% category of sets
+  \cat{Set}
+}
+
+% Math Operators
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\map}{map}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\fib}{fib}
+\DeclareMathOperator{\cofib}{cofib}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coim}{coim}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Shv}{Shv}
+\DeclareMathOperator{\PSh}{PSh}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\supp}{supp}
+% \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Sk}{Sk}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\real}{\operatorname{Re}}
+\DeclareMathOperator{\imag}{\operatorname{Im}}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Std}{Std}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\co}{co}
+\DeclareMathOperator{\Class}{Class}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\charer}{char}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\ \delimsize\vert\ #2}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the
+% starred version does not.
+\makeatletter
+\let\oldabs\abs\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+% partial derivative macro $\pder{f}{x}
+\makeatletter
+\DeclareRobustCommand{\pder}[1]{%
+  \@ifnextchar\bgroup{\@pder{#1}}{\@pder{}{#1}}}
+\newcommand{\@pder}[2]{\frac{\partial#1}{\partial#2}}
+\makeatother
+
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{note}{Note}
+\newtheorem*{digression}{digression}
+\newtheorem*{question}{Question?}
+\newtheorem*{sol}{Solution}
+\newenvironment{claim}[1]{$ $\par\noindent\underline{Claim\space#1:}}{$ $\newline}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof\space#1:}}{\hfill $\qed$\newline}
+
+\newcounter{casenum}
+\newenvironment{caseof}{\setcounter{casenum}{1}}{\vskip.5\baselineskip}
+\newcommand{\case}[2]{\vskip.5\baselineskip\par\noindent {\bfseries Case \arabic{casenum}:} #1\\#2\addtocounter{casenum}{1}}

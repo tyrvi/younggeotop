@@ -200,6 +200,12 @@ $A^{h}$ called the Henselization of $A$
 \href{https://stacks.math.columbia.edu/tag/03QD}{Tag 03QD}). That is,
 the assignment $A \mapsto A^{h}$ is functorial.
 
+% TODO: etale morphisms
+
+% TODO: reduced structures on a scheme
+
+% TODO: generic points of a scheme
+
 %-------------------------------------------------------------------------------
 
 \section{The Nisnevich Topology and Universal Properties of the Stable
@@ -210,99 +216,19 @@ discuss some of it's properties (including, hopefully, descent) as it
 is central to the definition of the Motivic homotopy category. Then we
 introduce the (un)stable Motivic homotopy categories and discuss/prove
 their universal properties following~\cite{robalo2012noncommutative}
-sections 5.1 and 5.2.
-
-% We begin by discussing Grothendieck topologies. We attempt to do work
-% a much as possible in the setting of $\infty$-categories. However,
-% note that the $\infty$-categorical generalization of a Grothendieck
-% topology is in some sense no generalization at all. This is due to two
-% facts. First, there is a canonical equivalence
-% $N(\CC_{/C}) \simeq N(\CC)_{/C}$ for a $1$-category $\CC$. Secondly,
-% if $\CC$ is an $\infty$-category, then a Grothendieck topology on
-% $\CC$ is equivalent to giving a Grothendieck topology on the homotopy
-% category $h\CC$\footnote{See HTT Remark 6.2.2.3 for details.}. Hence,
-% we discuss Grothendieck (pre)topologies primarily in the setting of
-% $1$-categories, following~\cite{maclane2012sheaves} as it is at times
-% conceptually easier.
-
-% \begin{definition}
-%   Let $\CC$ be an $\infty$-category.
-%   \begin{enumerate}[label=(\arabic*)]
-%   \item A \emph{sieve} on $\CC$ is a full subcategory
-%     $\CC^{(0)} \subseteq \CC$ such that if $f : C \to D$ is a morphism
-%     in $\CC$ and $D \in \CC^{(0)}$, then $C \in \CC^{(0)}$.
-%   \item If $C \in \CC$ is an object, then a \emph{sieve on $C$} is a
-%     sieve on the over (slice) category $\CC_{/C}$.
-%   \item Let $f : D \to C$ be a morphism and $\CC^{(0)}_{/C}$ a sieve
-%     on $C$, then let $f^*\CC^{(0)}_{/C}$ denote the unique sieve on
-%     $D$ such that $f^*\CC^{(0)}_{/C} \subset \CC_{/D}$ and
-%     $\CC^{(0)}_{/C}$ determine the same sieve on $\CC_{/f}$.
-%   \end{enumerate}
-% \end{definition}
-% Observe that this definition is a direct generalization of the
-% definition of a sieve in the setting of $1$-categories so it makes no
-% difference whether $\CC$ is a $1$-category or an $\infty$-category.
-% % TODO: double check this claim
-
-% \begin{definition}{(\emph{Grothendieck Topology})}
-%   Let $\CC$ be an $\infty$-category, then a Grothendieck topology on
-%   $\CC$ consists of for each $C \in \CC$ a collection of sieves called
-%   \emph{covering sieves} such that
-%   \begin{enumerate}[label=(\arabic*)]
-%   \item (maximal sieve) if $C \in \CC$, then the sieve
-%     $\CC_{/C} \subseteq \CC_{/C}$ is a covering sieve;
-%   \item (stability) if $f : C \to D$ is a morphism in $\CC$ and
-%     $\CC^{(0)}_{/C}$ is a covering sieve on $D$, then
-%     $f^*\CC^{(0)}_{/C}$ is a covering sieve on $C$
-%   \item (transitivity) Let $C$ be an object of $\CC$, $\CC^{(0)}_{/C}$
-%     a covering sieve on $C$, and $\CC^{(1)}_{/C}$ an arbitrary sieve
-%     on $C$. If for each $f : D \to C$ in $\CC^{(0)}_{/C}$ that
-%     $f^* \CC^{(1)}_{/C}$ is a covering sieve on $D$, then
-%     $\CC^{(1)}_{/C}$ is a covering sieve on $C$.
-%   \end{enumerate}
-% \end{definition}
-% Again this definition is a direct generalization of the definition of
-% a Grothendieck topology for a $1$-category and by HTT Remark 6.2.2.3
-% the data of a Grothendieck topology on $\CC$ is equivalent to the data
-% of a Grothendieck topology on the homotopy category $h\CC$.
-
-% Consider the following alternative definition of a Grothendieck
-% topology.
-% \begin{definition}
-%   Let $\CC$ be a $1$-category and $U \in \CC$ an object. A
-%   Grothendieck topology on $U$ consists of a collection of families of
-%   maps $\{U_i \to U\}_{i \in I}$ which we call \emph{coverings} of $U$ such
-%   that
-%   \begin{enumerate}[label=(\arabic*)]
-%   \item for any covering $\{U_i \to U\}_{i \in I}$ and any morphism
-%     $V \to U$ the fiber products $U_i \times_U \times V$ exists and
-%     $\{U_i \times_{U} V \to V\}_{i \in I}$ is a covering of $V$;
-%   \item if
-%     $\{U_i \to U\}_{i \in I}$ is a covering of $U$ and if for each
-%     $i \in I$, $\{V_{ij} \to U_i\}_{j \in J_i}$ is a covering of
-%     $U_i$, then the collection $\{V_{ij} \to U_i \to U\}_{i, j}$ is a
-%     covering of $U$;
-%   \item for any $U \in \CC$ the collection $\{\id[U]\}$ is a
-%     covering of $U$.
-%   \end{enumerate}
-%   If $\CC$ is a category with a covering for each $U \in \CC$, then we
-%   call $\CC$ a site.
-% \end{definition}
-
-% We begin by discussing Grothendieck topologies. We attempt to do work
-% a much as possible in the setting of $\infty$-categories. However,
-% note that the $\infty$-categorical generalization of a Grothendieck
-% topology is in some sense no generalization at all. This is due to two
-% facts. First, there is a canonical equivalence
-% $N(\CC_{/C}) \simeq N(\CC)_{/C}$ for a $1$-category $\CC$. Secondly,
-% if $\CC$ is an $\infty$-category, then a Grothendieck topology on
-% $\CC$ is equivalent to giving a Grothendieck topology on the homotopy
-% category $h\CC$\footnote{See HTT Remark 6.2.2.3 for details.}. Hence,
-% we discuss Grothendieck (pre)topologies primarily in the setting of
-% $1$-categories, following~\cite{maclane2012sheaves} as it is at times
-% conceptually easier.
+sections $5.1 - 5.3$. Finally, note that in many of the constructions
+there are the usual subtle set-theoretic issues that must be dealt
+with in order to avoid Russell type paradox. We will generally ignore
+any such subtleties in the interest of exposition as all the issues
+can be dealt with through the use of universes and enlarging the
+universe when necessary.
 
 \subsection{Preliminaries}
+
+We begin by recalling the notion of Grothendieck (pre)topologies as
+well as
+
+\subsubsection*{Grothendieck (Pre)Topologies}
 
 We begin by discussing Grothendieck (pre)topologies. Although we
 attempt to work as much as possible in the setting of
@@ -315,10 +241,7 @@ all\footnote{This is due to the fact that there is a bijection between
   N(\CC)_{/C}$. Since we will primarily be interested in the nerve of
   a $1$-category this has no effect. See HTT Remark 6.2.2.3 for
   details.} so for ease of exposition we discuss Grothendieck
-topologies purely in the setting of $1$-categories. Finally, note that
-there are occasionally set theoretic issues we can generally be
-overcome using the general nonsense of universes so again in the
-interest of exposition we ignore any of these issues.
+topologies purely in the setting of $1$-categories.
 
 \begin{definition}
   Let $\CC$ be a $1$-category. A \emph{Grothendieck pretopology $\tau$
@@ -342,10 +265,10 @@ interest of exposition we ignore any of these issues.
   \begin{enumerate}[label=(\arabic*)]
   \item Let $\CC$ be a $1$-category and $C \in \CC$. A \emph{sieve on
       $C$} is a subfunctor of $\y_C := \Hom_{\CC}(-, C)$, that is, a
-    set of objects of $\CC_{/C}$ such that for each $f : D \to C$ in
-    $\SS$ and each morphism $g_i : D_i \to D$ in $\CC$ the composition
-    $f \circ g_i : D_i \to D$ is in $\SS$.
-  \item Let $\FF := \{f_i : D_i \to X\}$ be a collection of morphisms
+    set of objects $\SS$ of $\CC_{/C}$ such that for each
+    $f : D \to C$ in $\SS$ and each morphism $g_i : D_i \to D$ in
+    $\CC$ the composition $f \circ g_i : D_i \to C$ is in $\SS$.
+  \item Let $\FF := \{f_i : D_i \to C\}$ be a collection of morphisms
     in $\CC$. The \emph{sieve generated by $\FF$} is the collection of
     morphisms $h : D \to C$ which factor as $h = f_i \circ g$ for some
     $f_i \in \FF$.
@@ -360,7 +283,7 @@ interest of exposition we ignore any of these issues.
   Let $\CC$ be a $1$-category. A \emph{Grothendieck topology on $\CC$}
   consists of for each $C \in \CC$ a family $\SS(C)$ of sieves over
   $C$ which we call \emph{covering sieves} such that:
-  \begin{enumerate}
+  \begin{enumerate}[label=(\arabic*)]
   \item The sieve $\{\id[C]\}$ is a covering sieve of $C$.
   \item If $\SS$ is a covering sieve of $C$ and $f : D \to C$ is a
     morphism in $\CC$, then $\SS_{D}$ is a covering sieve of $D$.
@@ -455,6 +378,7 @@ generates a Grothendieck topology on $\CC$.
 % TODO: additional potential examples: h-topology, qfh-topology,
 % cdh-topology, indiscrete topology
 
+\subsubsection*{Presheaves and Sheaves on a Site}
 
 Now given a site $\CC_\tau$ we may consider $\AA$-valued presheaves on
 $\CC_\tau$ by defining $\PSh(\CC_\tau) := \Fun(\CC^{op}, \AA)$. To
@@ -504,7 +428,7 @@ $X \in \CC$. Then we have ``restriction'' morphisms
 and taking products we obtain the diagram in $\AA$
 \begin{equation}\label{eq:sheaf-condition}
   \begin{tikzcd}
-    F(X) \arrow[r, "\prod_i f_i^*"] & \prod_iF(U_i) \arrow[rr, "{\prod_j \pr[1, i, j]^*}"', shift right=2] \arrow[rr, "{\prod_i \pr[2, i, j]^*}", shift left=2] &  & {\prod_{i, j} F(U_i \times_X U_j)}
+    F(X) \arrow[r, "\prod_i f_i^*"] & \prod_iF(U_i) \arrow[rr, "{\prod_j \pr[2, i, j]^*}"', shift right=2] \arrow[rr, "{\prod_i \pr[1, i, j]^*}", shift left=2] &  & {\prod_{i, j} F(U_i \times_X U_j)}
   \end{tikzcd}
 \end{equation}
 
@@ -519,8 +443,42 @@ and taking products we obtain the diagram in $\AA$
   objects sheaves. If the context is clear we write $\Shv(\CC)$.
 \end{definition}
 
-% TODO: sheaves on a site? need to discuss equalizers (i.e. sheaf
-% condition is defined in terms of equalizers)
+% TODO: simplicial sheaves?
+
+\subsubsection*{Simplicial Presheaves and Sheaves}
+
+In the case of motivic homotopy theory we will want to use presheaves
+and sheaves of simplicial sets (spaces, anima, Kan complexes). Let
+$\Delta$ denote the skeleton of the category of finite ordered sets
+and order preserving maps, that is, $\Delta$ has object
+$[n] = \{ 0 < 1 < \cdots < n\}$ and morphisms the order preserving
+maps. Then define the category of simplicial sets as presheaves of
+sets on $\Delta$, that is,
+\begin{equation*}
+  \sSet := \Fun(\Delta^{op}, \Set).
+\end{equation*}
+For a category $\CC$ we may make the identifications
+\begin{equation*}
+  \PSh(\CC, \sSet) = \PSh(\CC \times \Delta, \Set) = \PSh(\Delta, \PSh(\CC, \Set)).
+\end{equation*}
+so we define the category of simplicial presheaves as
+\begin{equation*}
+  \PSh(\CC, \sSet) = \Fun(\CC^{op}, \sSet) = \Fun(\CC^{op}, \Fun(\Delta^{op}, \Set)) = \PSh(\Delta, \Fun(\CC^{op}, \Set))
+\end{equation*}
+
+Similarly, if $\tau$ is a Grothendieck topology on $\CC$ we have an
+induced topology on $\CC \times \Delta$ given by
+$\Cov_{\tau}(X \times [n]) := i_n(\Cov_\tau(X))$ for each $X \in \CC$
+where $i_n : \CC \to \CC \times \Delta$ is the inclusion functor
+$i_n(X) := X \times [n]$, $i_n(f) = f \times \id[[n]]$. Thus, this
+defines the category of sheaves on $\CC \times \Delta$ which may be
+identified with the category of functors
+$\Delta^{op} \to \Shv_\tau(\CC, \Set)$, that is, simplicial
+sheaves. In other words a simplicial presheaf $n \mapsto F_n$ is a
+simplicial sheaf if and only if each $F_n$ is a sheaf. It follows that
+all the elementary results on presheaves and sheaves of sets extends
+to presheaves and sheaves of simplicial sets through these
+identifications.
 
 \subsection{The Nisnevich Topology and Descent}
 
@@ -657,38 +615,266 @@ uses the following theorem from~\cite{milne1980etale}.
   % TODO: double check this
 \end{proof}
 
-\begin{definition}
+\begin{definition}\label{def:elementary-distinguished-square}
   A commutative square
-  \begin{equation*}
+  \begin{equation*}\label{eq:elementary-distinguished-square}
     \begin{tikzcd}
-      p^{-1}(U) = U \times_X V \arrow[d] \arrow[r] & V \arrow[d, "p"] \\
-      U \arrow[r, "i"]                             & X
+      U \times_X V \arrow[d] \arrow[r] & V \arrow[d, "p"] \\
+      U \arrow[r, "i"] & X
     \end{tikzcd}
   \end{equation*}
   is said to be an \emph{elementary distinguished square} if
   \begin{enumerate}[label=(\arabic*)]
   \item the square is a pullback;
-  \item $i : U \xhra X$ is an open immersion;
+  \item $i : U \xhra{i} X$ is an open immersion;
   \item $p : V \to X$ is etale;
   \item the canonical projection $p^{-1}(Z) \to Z$ is an isomorphism
     where $Z := X \setminus U$ and $p^{-1}(Z)$ have the
     \href{https://stacks.math.columbia.edu/tag/01J4}{reduced
       structure} of closed subschemes.
   \end{enumerate}
+  Moreover, one can see that an elementary distinguished square is in
+  fact a pushout.
+
+  An important fact is that $\{i : U \xhra{} X, p : V \to X\}$ is a
+  Nisenvich covering and we will see later (Theorem~\ref{thm:descent})
+  that they in fact for a basis for the Nisnevich topology.
 \end{definition}
 
-Observe that a distinguished square determines a Nisnevich covering by
-taking $V \to X$ and $U \to X$.
+\begin{lemma}
+  Suppose $p : V \to X$ is etale, $Z \subseteq X$ is a closed subset,
+  and $Z$ and $p^{-1}(Z)$ are given the reduced structures. Then the
+  square
+  \begin{equation*}
+    \begin{tikzcd}
+      p^{-1}(Z) \arrow[d] \arrow[r] & V \arrow[d, "p"] \\
+      Z \arrow[r, hook]                             & X
+    \end{tikzcd}
+  \end{equation*}
+  is a pullback.
+\end{lemma}
+
+\begin{proof}
+  Indeed the pullback $V \times_X Z \to V$ is a closed immersion with
+  underlying closed subset $p^{-1}(Z)$. Additionally, $V \times_X Z$
+  is reduced since an etale scheme over a reduced scheme is reduced
+  (ref?). Hence, the uniqueness of reduced subschemes on a given
+  closed subset (ref?) ensures that the map
+  $p^{-1}(Z) \to V \times_{X} Z$ induced by the usual pullback square
+  is an isomorphism.
+\end{proof}
+
+% Observe that a distinguished square determines a Nisnevich covering by
+% taking $V \to X$ and $U \to X$.
 % TODO: why?
+
+\begin{proposition}
+  % proposition 1.3
+  Let $S$ be a scheme and $\CC$ a full subcategory of $\Sch_{/S}$,
+  then the elementary distinguished squares
+  (\ref{def:elementary-distinguished-square}) are pushouts in
+  $\Shv(\CC_{Nis})$.
+\end{proposition}
+
+\begin{proof}
+  % TODO
+\end{proof}
+
+\begin{corollary}
+  % corollary 1.4
+  Let $\CC$ be a full subcategory of $\Sch_{/S}$. Given an elementary
+  distinguished square in $\CC$ and if $F$ is a sheaf of abelian
+  groups on $\CC_{Nis}$, then there is a natural associated long exact
+  Mayer-Vietoris sequence
+\end{corollary}
+
+\begin{proof}
+  % TODO
+\end{proof}
+
+\begin{lemma}
+  % lemma 1.5
+  Let $p : U \to X$ be etale and $U$, $X$ Noetherian schemes. If $p$
+  is completely decomposed at every generic point of $X$, then
+  $U \to X$ has a rational section. That is, there exists a dense open
+  subset $X' \subset X$ such that $p : p^{-1}(X') \to X'$ has a section.
+  % TODO: what is a rational section
+\end{lemma}
+
+\begin{proof}
+  % TODO
+\end{proof}
+
+\begin{proposition}
+  % proposition 1.6
+  Let $p : U \to X$ be a Nisnevich covering with $U$ and $X$
+  Noetherian. Then there is a finite filtration
+  \begin{equation*}
+    \emptyset = Z_n \subseteq Z_{n-1} \supseteq \cdots \subseteq Z_0 = X
+  \end{equation*}
+  of $X$ by closed subsets such that for each $0 \leq i \leq n$ the
+  map $^{-1}(Z_i \setminus Z_{i+1}) \to Z_i \setminus Z_{i+1}$ has a
+  section where for $i \geq 1$ $Z_i$ and $p^{-1}(Z_i)$ are given the
+  reduced structures.
+\end{proposition}
+
+\begin{theorem}\label{thm:descent}
+  % theorem 1.7
+  Let $S$ be a scheme and $\CC$ a full subcategory of $\Sch_{/S}$
+  consisting of Noetherian schemes. Let $\AA$ be any category (should
+  maybe be a presheaf of sets?), then a presheaf
+  $F \in \PSh(\CC, \AA)$ is a sheaf in the Nisnevich topology on $\CC$
+  if and only if
+  \begin{enumerate}[label=(\arabic*)]
+  \item $F(\emptyset)$ is terminal in $\AA$;
+  \item for any $X \in \CC$ and any elementary distinguished square
+    (\eqref{eq:elementary-distinguished-square}) the induced square
+    \begin{equation*}
+      \begin{tikzcd}
+        F(X) \arrow[d] \arrow[r] & F(U) \arrow[d, "F(i)"] \\
+        F(V) \arrow[r, "F(p)"] & F(U \times_X V)
+      \end{tikzcd}
+    \end{equation*}
+    is a pullback.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  % TODO
+\end{proof}
 
 \subsection{The Motivic Homotopy Category}
 
+We now have the necessary knowledge about the Nisnevich topology to
+construct the motivic homotopy category. The main goal of the
+construction of the motivic homotopy category and its stable variant
+is to allow the general methods of abstract homotopy theory to be
+applied to the algebro-geometric world of schemes. The issue of course
+with simply applying the usual tools of homotopy theory and algebraic
+topology to the underlying topological space of a scheme is that this
+ignores a great deal of the structure which is part of a
+scheme. Additionally, the ``natural'' topology, the Zariski topology,
+on a scheme is incredibly coarse and ignores the ``true'' topological
+nature of many of the objects.
+
+Fix $S$ a Noetherian scheme and let $\Sm^{ft}(S)$ denote the category
+of smooth separated schemes of finite type over $S$. The general idea
+to be able to do homotopy theory with schemes is that we should think
+of the affine line $\A^1$ as an interval. However, many of the usual
+constructions of homotopy theory rely on the existence of (co)limits
+which is not true in the case of schemes. In order to deal with this
+one passes to the formal completion of the appropriate category
+(i.e. presheaves of spaces). This is however still not quite right as
+we would like $\A^1$ to be contractible as well any scheme $X$ which
+is a union of two open subschemes $U$ and $V$ should still union to
+give $X$ in the new category.
+
+We denote by $\HH(S)$ what will be the $\infty$-category underlying
+the $\A^1$-model category constructed by Morel and Voevodsky.
+
+The construction proceeds as follows. Fix a Noetherian scheme and let
+$\Sm^{ft}(S)$ denote the category of smooth separated schemes of
+finite type over $S$. Consider $\Sm^{ft}(S)$ as an $\infty$-category
+by $\CC := N(\Sm^{ft}(S))$, then with the Nisnevich topology it
+becomes an $\infty$-site (HTT Definition 6.2.2.1). As we have seen the
+families of morphisms $\{V \xra{i} X, U \xra{p} X\}$ form a basis for the
+Nisnevich topology (Theorem~\ref{thm:descent}).
+
+Let $\SS$ denote the $\infty$-category of spaces (homotopy types, Kan
+complexes, anima etc.). For a simplicial set $S$ we let
+$\PSh(S) := \Fun(S^{op}, \SS)$ denote the $\infty$-category of
+presheaves of spaces on the simplicial set $S$. To obtain all
+(co)limits we pass to $\PSh(\CC)$ which has all (small) (co)limits
+(HTT Corollary 5.1.2.4)\footnote{HTT Proposition 4.2.4.4 ensures that
+  this category may be identified with the underlying
+  $\infty$-category of the model category of simplicial presheaves on
+  $\Sm^{ft}(S)$ which is the category used in~\cite{morel1999}. So the
+  homotopy theory we end up with will be the same.}.
+
+Recall the $\infty$-categorical Yoneda embedding (HTT 5.1.3) ensures
+that we have a fully faithful map of $\infty$-categories
+$j : \CC \to \PSh(\CC)$ and we identify $X \in \CC$ with $j(X)$ as
+usual. By Theorem~\ref{thm:descent} we get that $F \in \PSh(\CC)$ is a
+sheaf if and only if it maps Nisnevich squares to pullback squares. It
+follows that since elementary distinguished squares are
+pushouts\footnote{This fact should follow from gluing pullback
+  squares.} (Definition~\ref{def:elementary-distinguished-square}),
+then every representable presheaf $j(X)$ is a sheaf. Write
+$\Shv_{Nis}(\CC) \subseteq \PSh(\CC)$ for the $\infty$-category of
+sheaves in the Nisnevich topology on $\CC$. This has a left adjoint
+$a_{Nis}$ sheafification which is an exact functor\footnote{In
+  particular, is a topological localization at the collection of all
+  monomorphisms $i : U \to j(C)$ corresponding to covering sieves on
+  $C \in \CC$ which implies $\Shv_{Nis}(\CC)$ is an $\infty$-topos
+  (HTT Definition 6.1.0.4).}  (HTT Lemma 6.2.2.7) and
+$\Shv_{Nis}(\CC)$ is an $\infty$-topos\footnote{Recall, we may
+  characterize an $\infty$-topos as an $\infty$-category $\CC$ such
+  that $\CC$ is presentable, colimits are universal, coporducts are
+  disjoint, every groupoid object is effective.}. In particular,
+$\Shv_{Nis}(\CC)$ is a presentable localization of a presentable
+$\infty$-category $\PSh(\CC)$.
+
+The next step is to consider the hypercompletion
+$\Shv_{Nis}(\CC)^{\wedge}$ of the $\infty$-topos
+$\Shv_{Nis}(\CC)$. Recall the hypercompletion $\XX^{\wedge}$ of an
+$\infty$-topos $\XX$ is the left exact localization of $\XX$ at the
+$\infty$-connective morphisms, that is, those morphisms which satisfy
+a form of Whitehead's theorem in the $\infty$-topos $\XX$ (HTT
+pg. 662-663). This implies that $\XX^{\wedge}$ is also an
+$\infty$-topos. Equivalently, this is the localization of $\PSh(\CC)$
+spanned by objects which are local with respect to the class of
+Nisnevich hypercovers.
+
+The final step is to recover $\A^1$-invariance, that is, we want to
+restrict to sheaves $F$ such that $F(X) \to F(X \times \A^1)$ is an
+equivalence. This is accomplished by taking the localization of
+$\Shv_{Nis}(\CC)^{\wedge}$ with respect to the class of all projection
+maps $\{X \times \A^1 \to X\}_{X \in \CC}$. Write $\HH(S)$ for the
+localization, then from all the general previous nonsense $\HH(S)$ is
+presentable with respect to the intermediate universe and very big and
+comes with a universal property.
+
+\begin{theorem}{\emph{(\cite{robalo2012noncommutative} Theorem 5.2)}}
+  Let $\Sm^{ft}(S)$ be the category of smooth schemes of finite type
+  over a Noetherian scheme $S$ and let $L : N(\Sm^{ft}(S)) \to \HH(S)$
+  denote the composition of localizations
+  \begin{equation*}
+    N(\Sm^{ft}(S)) \to \PSh(N(\Sm^{ft}(S))) \to \Shv_{Nis}(\Sm^{ft}(S)) \to \Shv(\Sm^{ft}(S))^{\wedge} \to \HH(S).
+  \end{equation*}
+  Then for any $\infty$-category $\DD$ with all colimits the map
+  induced by composition with $L$
+  \begin{equation*}
+    \Fun^{L}(\HH(S), \DD) \to \Fun(N(\Sm^{ft}(S)), \DD)
+  \end{equation*}
+  is fully faithful and has essential image the full subcategory of
+  $\Fun(N(\Sm^{ft})(S), \DD)$ spanned by those functors satisfying
+  Nisnevich descent (i.e. Theorem~\ref{thm:descent}) and
+  $\A^1$-invariance (i.e. $F(X \times \A^1) \to F(X)$ is an
+  equivalence) where $Fun^{L}$ is the full subcategory of colimit
+  preserving functors.
+\end{theorem}
+
+Informally, what the above says is that every colimit preserving
+functor $N(\Sm^{ft}(S)) \to \DD$ which satisfies
+\begin{itemize}
+\item $\A^1$-invariance: $F(X \times \A^1) \to F(X)$ and
+\item Nisnevich descent: send elementary distinguished squares to
+  pushout squares
+\end{itemize}
+factors uniquely through $\HH(S)$ which is a presentable
+$\infty$-category which we call the unstable motivic
+$\infty$-category.
+
 \subsection{The Stable Motivic Homotopy Category}
+
+We now consider how to construct the stable motivic
+$\infty$-category. First, $\HH(S)$ is presentable so it has a terminal
+object $*$ and $\HH(S)_{*}$ is presentable.
 
 %-------------------------------------------------------------------------------
 
-\section{Algebraic K-theory and Representability in Motivic Homotopy
-  Theory}
+% \section{Algebraic K-theory and Representability in Motivic Homotopy
+%   Theory}
 
 
 \addcontentsline{toc}{section}{References}
